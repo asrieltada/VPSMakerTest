@@ -5,7 +5,7 @@ const DOWNLOAD_SPARSE = "sparse";
 const DOWNLOAD_DENSE  = "dense";
 const TOKEN = "715e51e533daf5a7bd349e32797296ca568348f500d568e574803ce7ee491695" // ADD YOUR IMMERSAL DEVELOPER TOKEN
 const MAP_IDS = [
-  { id: 83077 },  // ADD YOUR IMMERSAL MAP ID
+  { id: 83181 },  // ADD YOUR IMMERSAL MAP ID
 ]
 
 let videoWidth = null
@@ -330,7 +330,7 @@ function getImageData() {
 // Switch DOWNLOAD_DENSE to DOWNLOAD_SPARSE if you want to use the sparse point cloud.
 function loadPLY(mapId) {
   let loader = new THREE.PLYLoader()
-  let url = BASE_URL + DOWNLOAD_DENSE + '?token=' + TOKEN + '&id=' + mapId
+  let url = BASE_URL + DOWNLOAD_SPARSE + '?token=' + TOKEN + '&id=' + mapId
 
   loader.load(url, function (geometry) {
     const {scene, camera, renderer} = XR8.Threejs.xrScene()
