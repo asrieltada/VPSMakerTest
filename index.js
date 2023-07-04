@@ -5,7 +5,7 @@ const DOWNLOAD_SPARSE = "sparse";
 const DOWNLOAD_DENSE  = "dense";
 const TOKEN = "715e51e533daf5a7bd349e32797296ca568348f500d568e574803ce7ee491695" // ADD YOUR IMMERSAL DEVELOPER TOKEN
 const MAP_IDS = [
-  { id: 83184 },  // ADD YOUR IMMERSAL MAP ID
+  { id: 83193 },  // ADD YOUR IMMERSAL MAP ID
 ]
 
 let videoWidth = null
