@@ -1,4 +1,5 @@
 const BASE_URL = "https://api.immersal.com/"
+
 const CAPTURE_IMAGE = "capture"
 const SERVER_LOCALIZE = "localize"
 const DOWNLOAD_SPARSE = "sparse";
@@ -25,7 +26,8 @@ let pointCloud = null
 
 /* globals XR8 XRExtras THREE TWEEN */
 const placegroundScenePipelineModule = () => {
-  const modelFile = 'tree.glb'                            // 3D model to spawn at tap
+  const modelFile = 'tree.glb'
+  const dragonLocation = './3D/dragon.glb'                            // 3D model to spawn at tap
   const startScale = new THREE.Vector3(0.01, 0.01, 0.01)  // Initial scale value for our model
   const endScale = new THREE.Vector3(2, 2, 2)             // Ending scale value for our model
   const animationMillis = 750                             // Animate over 0.75 seconds
@@ -95,6 +97,15 @@ const placegroundScenePipelineModule = () => {
   const placeObject = (pointX, pointZ) => {
     loader.load(
       modelFile,  // resource URL.
+      (gltf) => {
+        animateIn(gltf, pointX, pointZ, Math.random() * 360)
+      }
+    )
+  }
+
+  const placeObjectLoader = (modelpoint,pointX, pointZ) => {
+    loader.load(
+      modelpoint,  // resource URL.
       (gltf) => {
         animateIn(gltf, pointX, pointZ, Math.random() * 360)
       }
@@ -310,6 +321,7 @@ function localize() {
           pointCloud.position.set(position.x, position.y, position.z);
           pointCloud.quaternion.set(rotation.x, rotation.y, rotation.z, rotation.w);
           pointCloud.scale.set(scale.x, scale.y, scale.z);
+          placeObjectLoader(dragonLocation,position.x,position.z);
         }
       }
       else {
